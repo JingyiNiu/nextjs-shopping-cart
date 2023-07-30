@@ -1,0 +1,16 @@
+.button {
+  color: var(--txt-primary);
+  border-color: var(--dark-gray);
+}
+
+.button:hover {
+  color: #fff;
+  background-color: var(--dark-gray);
+}
+
+.button:disabled {
+  border-color: var(--light-gray);
+  background-color: #fff;
+  color: var(--light-gray);
+  /* cursor: not-allowed; */
+}

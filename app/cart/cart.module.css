@@ -1,0 +1,30 @@
+.cartDropdown {
+  top: 29px;
+  right: 0;
+  border-color: var(--txt-secondary);
+  min-width: 150px;
+}
+
+.active {
+  background: #fff;
+  color: #000;
+  border-top: 1px solid var(--txt-secondary);
+  border-left: 1px solid var(--txt-secondary);
+  border-right: 1px solid var(--txt-secondary);
+}
+
+.activeCartIcon{
+    fill: var(--txt-secondary);
+    color: var(--txt-secondary);
+}
+
+.cartIcon{
+    fill: var(--light-gray);
+    color: var(--light-gray);
+}
+
+@media (max-width: 640px) {
+  .dropDownWidth {
+    width: calc(100vw - 2rem);
+  }
+}
