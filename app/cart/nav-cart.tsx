@@ -16,11 +16,11 @@ const NavCart = () => {
   return (
     <div className="relative">
       <div
-        className={`cursor-pointer py-1.5 px-2 border border-transparent relative z-10 text-xs ${ activeCart ? styles.active : "" }`}
+        className={`cursor-pointer py-1.5 px-2 border relative z-10 text-xs ${ activeCart ? styles.active : "border-transparent" }`}
         onClick={() => setActiveCart(!activeCart)}
       >
         <span
-          className={`hidden sm:block font-medium ${ activeCart ? styles.activeCartIcon : styles.cartIcon }`}
+          className={`hidden sm:block font-medium ${ activeCart ? "" : styles.cartIcon }`}
         >
           My Cart ( {cart.length ? count : "0"} )
         </span>
