@@ -18,7 +18,6 @@ const ProductDetails = () => {
   const dispatch = useAppDispatch();
 
   const [disableButton, setDisableButton] = useState(true);
-  const [fetchError, setFetchError] = useState(false);
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null
   );
@@ -49,14 +48,8 @@ const ProductDetails = () => {
         const { sizeOptions, description, ...other } = res.data;
         setSelectProduct(other);
       })
-      .catch((err) => {
-        setFetchError(true);
-      });
+      .catch((err) => console.log(err));
   }, []);
-
-  if (fetchError) {
-    return <ErrorPage />;
-  }
 
   if (!productDetails) {
     return <>Loading</>;

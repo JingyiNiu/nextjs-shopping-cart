@@ -22,9 +22,6 @@ const Products = async () => {
 
   return (
     <>
-      <div className="text-red-400 mb-2">
-        * This is a testing page to debug loading error in products/[slug]
-      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-24">
         <div className="flex justify-center">
           <Image
