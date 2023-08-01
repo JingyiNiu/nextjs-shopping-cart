@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./cart.module.css";
-import { useSelector } from "react-redux";
 import CartItem from "./cart-item";
+import { useAppSelector } from "@/redux/hooks";
 
 const CartDropdown = () => {
-  const { cart } = useSelector((state: any) => state.cart);
+  const { cart } = useAppSelector((state: any) => state.cart);
 
   return (
     <div

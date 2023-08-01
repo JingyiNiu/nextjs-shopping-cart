@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import CartIcon from "./cart-icon";
-import { useSelector } from "react-redux";
 import styles from "./cart.module.css";
 import CartDropdown from "./cart-dropdown";
 import { CartItem } from "../interfaces/CartItem";
+import { useAppSelector } from "@/redux/hooks";
 
 const NavCart = () => {
   const [activeCart, setActiveCart] = useState(false);
-  const { cart } = useSelector((state: any) => state.cart);
+  const { cart } = useAppSelector((state: any) => state.cart);
   const count = cart.reduce(
     (total: number, item: CartItem) => total + item.quantity,
     0

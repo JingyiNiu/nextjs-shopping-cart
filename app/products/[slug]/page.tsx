@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/features/cartSlice";
 import { getProduct } from "@/app/actions/products";
 import Image from "next/image";
@@ -13,9 +12,10 @@ import ProductOptions from "./product-options";
 import Button from "@/app/components/button";
 import { ProductDetails } from "@/app/interfaces/ProductDetails";
 import { CartItem } from "@/app/interfaces/CartItem";
+import { useAppDispatch } from "@/redux/hooks";
 
 const ProductDetails = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [disableButton, setDisableButton] = useState(true);
   const [fetchError, setFetchError] = useState(false);
