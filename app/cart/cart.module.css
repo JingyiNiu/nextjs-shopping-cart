@@ -15,8 +15,8 @@
 }
 
 .activeCartIcon{
-    fill: var(--txt-secondary);
-    color: var(--txt-secondary);
+    fill: #000;
+    color: #000;
 }
 
 .cartIcon{

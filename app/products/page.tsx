@@ -1,52 +1,62 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
+import ErrorPage from "../error";
+
+import { baseUrl } from "@/app/actions/products";
 
 import ProductName from "./[slug]/product-name";
 import ProductPrice from "./[slug]/product-price";
 import ProductDescription from "./[slug]/product-description";
+import ProductOptionsRedux from "./[slug]/product-options-redux";
+import ProductButtonRedux from "./[slug]/product-button-redux";
 
-import { ProductDetails } from "@/app/interfaces/ProductDetails";
-import { getProduct } from "@/app/actions/products";
+const Products = async () => {
+  const productDetails = await getData();
 
-const Products = () => {
-  const [productDetails, setProductDetails] = useState<ProductDetails | null>(
-    null
-  );
-
-  const url = "/product";
-
-  useEffect(() => {
-    getProduct(url)
-      .then((res) => {
-        setProductDetails(res.data);
-      })
-  }, []);
+  const { sizeOptions, description, ...other } = productDetails;
+  const selectProduct = other
 
   if (!productDetails) {
-    return <>Loading</>;
+    return <ErrorPage/>;
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-24">
-      <div className="flex justify-center">
-        <Image
-          src={productDetails.imageURL}
-          width={300}
-          height={300}
-          className="object-contain max-w-xs w-full sm:max-w-full"
-          alt="product image"
-          priority
-        />
+    <>
+      <div className="text-red-400 mb-2">
+        * This is a testing page to debug loading error in products/[slug]
       </div>
-      <div>
-        <ProductName name={productDetails.title} />
-        <ProductPrice price={productDetails.price} />
-        <ProductDescription description={productDetails.description} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-24">
+        <div className="flex justify-center">
+          <Image
+            src={productDetails.imageURL}
+            width={300}
+            height={300}
+            className="object-contain max-w-xs w-full sm:max-w-full"
+            alt="product image"
+            priority
+          />
+        </div>
+        <div>
+          <ProductName name={productDetails.title} />
+          <ProductPrice price={productDetails.price} />
+          <ProductDescription description={productDetails.description} />
+          <ProductOptionsRedux options={productDetails.sizeOptions} />
+          <ProductButtonRedux selectProduct={selectProduct}/>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default Products;
+
+async function getData() {
+  const url = "/product";
+  const res = await fetch(`${baseUrl}${url}`);
+
+  if (!res.ok) {
+    return null;
+  }
+
+  return res.json();
+}
