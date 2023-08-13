@@ -1,4 +1,6 @@
 import "./globals.css";
+import { poppins } from "./styles/font";
+
 import Navbar from "./nav/navbar";
 
 import { Providers } from "@/redux/provider";
@@ -15,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="container mx-auto">
+      <body className={`container mx-auto ${poppins.className}`}>
         <Providers>
           <Navbar />
           <main className="inside-container px-4 mx-auto">{children}</main>
